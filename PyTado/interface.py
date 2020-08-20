@@ -173,6 +173,14 @@ class Tado:
         data = json.loads(str_response)
         return data
 
+    def getHome(self):
+        url = 'https://my.tado.com/api/v2/homes/%i' % (self.id)
+        req = urllib.request.Request(url, headers=self.headers)
+        response = self.opener.open(req)
+        str_response = response.read().decode('utf-8')
+        data = json.loads(str_response)
+        return data
+
     def getDevices(self):
         """Gets device information."""
         # pylint: disable=C0103
